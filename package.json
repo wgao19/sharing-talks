@@ -1,0 +1,18 @@
+{
+  "name": "trip-rr-sharing",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:wgao19/trip-rr-sharing-using-mdx-deck.git",
+  "author": "Wei Gao <wgao19@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  },
+  "scripts": {
+    "start": "mdx-deck sharing.mdx"
+  },
+  "devDependencies": {
+    "mdx-deck": "^1.6.4"
+  }
+}
