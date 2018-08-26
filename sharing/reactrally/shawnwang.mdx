@@ -1,0 +1,28 @@
+
+# Why React is _not_ Reactive
+
+ ## 🌟🎊🎉
+
+_Shawn Wang_
+
+- React *can* be reactive, but it's not. Why is that?
+- Because of the cost of rendering, because we want to do batching, because we do a push and pull scheduler (watch the talk to understand).
+
+```notes
+- Shawn is from Singapore
+- Very contentful, proposes a mindset how we think about the React framework and the app that we build using React
+```
+
+---
+> Why React is _not_ Reactive
+
+- Reactive "data producers" v.s. imperative "data consumers" 
+- React is v = f*(d$)
+
+```notes
+- continues to propose that "data producers" are meant to be reactive and "data consumers" (i.e. UI) are meant to be lazy and imperative
+- v = f*(d$), where f is fiber scheduler, and d$ is data stream that is meant to be reactive
+
+- Investigates and presents the idea thoroughly, incrementally brings audience to reach the conclusion
+- Fluent talk, appealing jokes and humors
+```

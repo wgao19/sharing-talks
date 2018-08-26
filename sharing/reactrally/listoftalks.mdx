@@ -1,0 +1,117 @@
+
+# list of talks 
+
+---
+
+## New to React (and Other Stuff)
+
+|speaker|title|links|
+|:-----:|:----|:---:|
+|Sunil Pai|Javascript and Virtual Reality|[video](https://www.youtube.com/watch?v=pvi0yUwSBec)|
+|[Eve Porcello](#)|❤️ GraphQL with `react-apollo`|[video](https://www.youtube.com/watch?v=F_M8v6MK0Sc)
+|[Ryan Moore](https://ryanmoore.party/)|The Life Cycle Methods and The Wolf: A Musicological Romp|[video](https://www.youtube.com/watch?v=o4XxQl-1JJU)
+|Ryan Florence|Route Recalculating (Suspense!!!)|[video](https://www.youtube.com/watch?v=X-kA8B2QzjY)
+|Lauren Tan|Swipe Left, Uncaught TypeError: Learning to Love Type Systems|[slides](https://speakerdeck.com/poteto/swipe-left-uncaught-typeerror-learning-to-love-type-systems)|
+|Ken Wheeler|Reason React|[video](https://www.youtube.com/watch?v=lzEweA7RPi0)
+|Jay Phelps|Help me WebAssembly, you're my only hope!|[video](https://www.youtube.com/watch?v=6KeDFvdxRZk)
+
+
+```notes
+Introductory to the frameworks
+
+Lauren Tan:
+Curry–Howard–Lambek correspondence
+- Writing total functions mean that you think about fault tolerance upfront. (Defines partial function: a function that is not defined for all inputs)
+- Be precise —?
+- Be pragmatic
+```
+
+---
+## Created with React
+
+|speaker|title|links|
+|:-----:|:----|:---:|
+|Sunil Pai|❤️ Oculus VR|[video](https://www.youtube.com/watch?v=pvi0yUwSBec)|
+|Joshua Comeau|🌟 Explorable Explanations with React|[video](https://www.youtube.com/watch?v=XjFR9Jc-ras)|
+|[Shirley Wu](http://sxywu.com/)|D3, REACT & DATAVIZ|[slides](http://sxywu.com/talks/react-d3-followup/#/title)|
+
+```notes
+- a couple of cool demos: Oculus Games, Oculus Venues
+- what do product requirements look like?
+	- _The Language of the System_ by Rich Hickey, [The Language of the System - Rich Hickey - YouTube](https://www.youtube.com/watch?v=ROor6_NGIWU)
+	- the “7 something” statements converted to saga actions
+```
+
+---
+
+## Diving Into React
+
+|speaker|title|links|
+|:-----:|:----|:---:|
+|[Shawn Swyx Wang](https://www.swyx.io/)|🌟 Why React is *not* Reactive|[video](https://www.youtube.com/watch?v=nyFHR0dDZo0), [slides](https://slides.com/swyx/why-react-is-not-reactive#/)
+|Jennifer Wong|🌟 A Little Story about Switching Framework|[slides](https://jennz0r.github.io/translating-react/)|
+|[Brandon Dail](https://github.com/aweary)|Algebraic effects, Fibers, Coroutines...Oh my!|[video](https://www.youtube.com/watch?v=7GcrT0SBSnI)
+
+```notes
+More in-depth discussion into the frameworks
+
+Jennifer:
+- Dissembles & reads react code
+- [JSX doc](http://facebook.github.io/jsx/)
+
+Brandon Dail:
+_very nice slides_
+- Motivations
+	- Async Rendering: Time slicing and suspense
+- Algebraic Effects: (Abstract model for) way to handle “effects” and their behavior are independent
+- Suspense
+
+Shawn:
+`view = f(data)`
+`v = f*(d$)`
+```
+
+---
+
+## Perspectives and Stories
+
+|speaker|title|links|
+|:-----:|:----|:---:|
+|_Michael Chan_| 🌟 Hot Garbage: Clean Code is Dead|[video](https://www.youtube.com/watch?v=-NP_upexPFg)
+|_Justin Falcone_|One Hundred Years of JavaScript|[video](https://www.youtube.com/watch?v=J7Cotg0DRsg)
+|_Henry Zhu_|Through the (Open Source) Looking Glass|[video](https://www.youtube.com/watch?v=h0sfFX7WH1c)
+
+```notes
+
+Justin Falcone:
+- Application is information. Information does not? break?
+[How Buildings Learn](https://www.goodreads.com/book/show/38310.How_Buildings_Learn?from_search=true)
+[CSS Zen Garden](http://www.csszengarden.com/)
+very opinionated
+
+Henry Zhu: 
+- (was supposed to but) did not talk about Babel 7 because it’s out
+- mostly talked about difficulties in fulltime maintaining opensource projects
+```
+
+---
+
+## resembles our own nightmares
+
+|speaker|title|links|
+|:-----:|:----|:---:|
+|Brian Holt|🌟 Chaos Monkeys in Your Browser: What Chaos Engineering Means for the Front End|[video](https://www.youtube.com/watch?v=A4_rRj-4Mv0)|
+|Kent C. Dodds|🌟 React Component Patterns|[#apropcalypse](https://twitter.com/hashtag/apropcalypse?src=hash)|
+
+```notes
+
+all very down-to-earth talks that address some of the real day-to-day issues we encounter
+
+- the first talk says chaos is normal in our industry
+  - classic example: internationalization
+- the second talk says just ship code (superb storytelling btw)
+- the third talk says there's still hope (nice talks by kent c dodds, clear, humerous, patient and nice)
+
+- gives a hint of how to improve our `ItemCard`?
+
+```

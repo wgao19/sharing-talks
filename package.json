@@ -10,7 +10,7 @@
     "react-dom": "^16.4.2"
   },
   "scripts": {
-    "start": "mdx-deck sharing.mdx"
+    "start": "mdx-deck sharing/index.js"
   },
   "devDependencies": {
     "mdx-deck": "^1.6.4"
