@@ -9,17 +9,26 @@ $ yarn start
 
 Otherwise a readup on this doc may be sufficient.
 
-If you wish to talk or ask more about my sharing or conferences in general, you are welcome to create an issue to start a conversation on that.
+If you wish to talk or ask more about my sharing or conferences in general, you are welcome to [create an issue](https://github.com/wgao19/trip-rr-sharing-using-mdx-deck/issues/new) to start a conversation on that.
 
 **Jump to**
 
 - [Motivation](#motivation)
+- [React Rally](./ReactRally.md)
+
+---
+
+Below are works in progress
+
+- [Salt Lake City](./SaltLakeCity.md)
+- [Advanced React Workshop](./AdvancedReactWorkshop.md) I attended a one day workshop before the conference.
+- [Others](./Others.md) (mainly climbing)
 
 ## Hi!
 
 My name is Wei.
 
-## 🖥∙️☕️∙👩🏻‍🌾🤞∙🧗🏻‍
+## 🖥∙☕️∙👩🏻‍🌾🤞∙🧗🏻‍
 
 A little more about me:
 
@@ -145,3 +154,5 @@ Even if you might or might not get recognized or awarded, the process itself wou
 ![](https://lh3.googleusercontent.com/SIil7y3d51at2kle2PpCHHYc5J89ICoDyNGXdjE9drP-xQUTchvyPVGmeM7tjq5RmOihtBo1T1iNNXhr3et_pdGxYfUOydZcgImdmEjyxvo1UXlFJ35jjqNx2hoqSHiSeJxQHpjJHlrlqYPr-6hdddW03fkJnitPocI5HMzKAaFm4JEkBJZmhlWPmCbzP4ikJpe6wN4X_-zwfBO1qeotaTJqTpNNv01JcT6LK8Kv9ENwKYGI_sCRRWzd8LTQSw8Yf4RK_CtGpdhhSADgPUyP3XYUbjdUzXpYm6Ij4V0Y9VM_rM7l8B4GlAYx3qX0mjnyQKuzNSUaHUSTPTzZXZH-5S25flsTqQunnUnnSUKOiAONDlu4WGmJYOyHN-lyxkO4w-Ni_vw-fZF3KKsnuWZYJVww3B7oHBBh9eyT4gK0GCbzQXnfbozBTGKLszHqVUe7tSScVHKT05BvaJ9uwdjtBb1RuFKa7GV7PmLHQUcU2RYqfVIoMxy4aUdQq_n3cHAQL9JK8SqfL5kPhTuljvoNe7WszY7zPsgSRaKa0rQBmgc6F2ewEiw9YTfqa_hlQmabg41ZnPQTW3aQPyWn6VCgzSiHwoDq582kXnLfwn919C-6EO7s-BfFDgOx4fmwgUY=w1034-h654-no)
 
 And I'm happy to be your ghost writer if you need one.
+
+Next up, read about [my notes on React Rally](./ReactRally.md).
