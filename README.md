@@ -11,6 +11,10 @@ Otherwise a readup on this doc may be sufficient.
 
 If you wish to talk or ask more about my sharing or conferences in general, you are welcome to create an issue to start a conversation on that.
 
+**Jump to**
+
+- [Motivation](#motivation)
+
 ## Hi!
 
 My name is Wei.
@@ -31,8 +35,9 @@ A little more about me:
 Beginning of this year, our team officially sponsors us to go to conferences with half coverage. You will need manager's approval so email your team lead to apply.
 
 ![](http://projectchangeonelife.org/catshelter/wp-content/uploads/2018/03/sponsor_me_banner_2018.gif)
+
 So I was like, company sponsored 🧗🏻‍?
-I literally started looking for those places that I've never been to
+I literally started looking for those places that I've never been to.
 
 ### Conference Line-Ups
 
@@ -43,8 +48,6 @@ _Next one is May/June 2019_
 Their website is really neat and cool.
 They even have a [YouTube video](https://www.youtube.com/watch?v=nREBeiaC0wc) of the whole coding process.
 But before I made up my mind they're already sold out.
-
-![](https://lh3.googleusercontent.com/8bmFciLPH0OWmiWOzw9X_wMNfvOEnaXrPlni2kf1et7NUKxGszH8zzU4pv3aN52NH2Dof5A1HpTIpXXjA7e5-qNbat0VHrbkMJt-tML5EbjiDFBvoxTcka-8663tSCg4NnL1tHjz9Ly8HmJ2YKJTlzLEdd7k-sKUtFIrej7v-0CHhvd5uPED2tIra9syMdCQ_1vZe4PmbpuH5lpcToSy4BeV2CGhSwncPRy2i84YHEcX0CpsIyMEDihDgNr3K_l8MpeAjj2kD8A_gHgF4ffmc4XCcoAtnZ6tSLii3SbW_MVJnaWUlInrYNutbhaU1Vz_qqUMMdnNAzAq9azK9kj1AMfn4htKhGpMhMNUKp-K_cEUODQtZHU8_XN7hatLKgk5SadXG5FZ5KqMiQo9RbtqXtORHGn7MVpRBqwkxLSLvn7Mew1e8vBhrCsl82Ew02TWRNKFsFw7Xe-Bpuf_6CHfYOP8j-u8G-btEOFgfHKMeJyJveaTSIUe2bCG-uGHk80XUN22fjh7q-22b1M7M_sQE9ijLyGQz3VXXqlOg9Zq6s4N8dVaUSQ4MgP2vBKTOzFPuk8fXdlVje-PH-MWx2EOXn-kGM9QV7X8lX1DfiQqM3HWewI4v_GQNTjespBTIX4=w719-h1440-no)
 
 #### [ReactNext](http://react-next.com/)
 
@@ -68,10 +71,10 @@ Then some of us went to React Europe. Check out [this guy](https://www.facebook.
 
 ### JavaScript Fatigue
 
-![](https://media3.giphy.com/media/7sThmP82L5v20/giphy.gif)
-
 Then there was this period of time when i was really tired about what i was doing everyday.
 There's a community term for that called _JavaScript fatigue_, but i'm not sure whether that was my syndrome.
+
+![](https://media3.giphy.com/media/7sThmP82L5v20/giphy.gif)
 
 Not sure about you guys but there was this period of time when I got really, really fed up with looking at this every day.
 
@@ -102,10 +105,14 @@ And then our team restructured and the feature was handed over to another develo
 > "Cannot merge because we have no qa resources"
 >
 > "Please prepare test cases and screenshots in your mr"
+>
+> "Would you fix if something goes wrong???"
+
+So I was really bored and sad and decided that I'll go to a conference and see what other front end developers are doing in this world.
 
 ![](https://media1.giphy.com/media/XPdR7H122vZ1C/giphy.gif)
 
-So I was really bored and sad and decided that I'll go to a conference and see what other front end developers are doing in this world.
+### Meeting React Rally
 
 And by that time the only one left this year was [React Rally](http://www.reactrally.com/).
 
