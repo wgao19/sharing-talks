@@ -24,7 +24,7 @@ A little more about me:
 
 **Jump to**
 
-- [Motivation](#motivation)
+- [Motivation](./Motivation.md)
 - [React Rally](./ReactRally.md)
 
 ---
