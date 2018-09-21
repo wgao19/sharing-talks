@@ -1,4 +1,4 @@
-# Bootstrapping the New Sharing
+# Journey to the New Sharing
 
 Sept 21, 2018
 

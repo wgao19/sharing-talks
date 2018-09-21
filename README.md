@@ -6,7 +6,7 @@ My name is Wei.
 
 A little more about me:
 
-- I am the developer sitting next to both Chenchen and Kenrick.
+- I am the developer sitting next to Chenchen and Kenrick.
 - Coffee is my water.
 - I'm the second girl developer in Shopee
 - I'm better known in the company as "the one who does rock climbing"
@@ -17,6 +17,7 @@ This repo originated from my sharing on the [React Rally](http://reactrally.com)
 
 I'm still exploring this topic. But I am personally giving more talks as I prepare for our weekly sharing. So I am refactoring this repo to my general talks repo.
 
-**Jump to**
+## List of Talks
 
-- [React Rally Conference Trip](./sharings/2018_9_9-react_rally/README.md)
+- [Sharing Progress Report 1](./sharings/2018_9_21-new-sharing-progress-report-1/README.md) Sept 21, 2018
+- [React Rally Conference Trip](./sharings/2018_9_9-react_rally/README.md) Sept 9, 2018
