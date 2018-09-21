@@ -1,4 +1,4 @@
-# Journey to the New Sharing
+# Journey to Our Future Sharing
 
 Sept 21, 2018
 

@@ -19,5 +19,5 @@ I'm still exploring this topic. But I am personally giving more talks as I prepa
 
 ## List of Talks
 
-- [Sharing Progress Report 1](./sharings/2018_9_21-new-sharing-progress-report-1/README.md) Sept 21, 2018
+- [Journey to Our Future Sharing 1](./sharings/2018_9_21-journey-to-our-future-sharing-1/README.md) Sept 21, 2018
 - [React Rally Conference Trip](./sharings/2018_9_9-react_rally/README.md) Sept 9, 2018
