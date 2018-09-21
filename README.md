@@ -1,14 +1,3 @@
-# Trip RR Sharing
-
-If you prefer to re-play the slides, clone this repo and do
-
-```
-$ yarn
-$ yarn start
-```
-
-Otherwise a readup on this doc may be sufficient.
-
 ## Hi!
 
 My name is Wei.
@@ -22,15 +11,12 @@ A little more about me:
 - I'm the second girl developer in Shopee
 - I'm better known in the company as "the one who does rock climbing"
 
+## A bit of history...
+
+This repo originated from my sharing on the [React Rally](http://reactrally.com) conference I went to. We could not find a meeting room that day, so we sneaked in a secret space in our company that turned out to work really well for sharings. So I took up the chance to expand our weekly sharing to a more organized form.
+
+I'm still exploring this topic. But I am personally giving more talks as I prepare for our weekly sharing. So I am refactoring this repo to my general talks repo.
+
 **Jump to**
 
-- [Motivation](./Motivation.md)
-- [React Rally](./ReactRally.md)
-
----
-
-Below are works in progress
-
-- [Salt Lake City](./SaltLakeCity.md)
-- [Advanced React Workshop](./AdvancedReactWorkshop.md) I attended a one day workshop before the conference.
-- [Others](./Others.md) (mainly climbing)
+- [React Rally Conference Trip](./sharings/2018_9_9-react_rally/README.md)
