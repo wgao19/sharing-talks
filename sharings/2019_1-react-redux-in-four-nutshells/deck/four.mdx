@@ -1,0 +1,157 @@
+## 🌰 React Redux v6
+
+---
+
+v6 is [there](https://github.com/reduxjs/react-redux/releases/tag/v6.0.0-beta.1) 🎉
+
+> this should be API-compatible with the existing version 5.x line
+
+---
+
+![](https://media.giphy.com/media/oOTTyHRHj0HYY/giphy.gif)
+
+---
+
+### v6 Major Changes
+
+- Uses [React's "New" Context API](https://reactjs.org/docs/context.html)
+- `withRef` replaced with `forwardRef`
+- No longer supports passing `store` by `props`
+
+```notes
+if you don't use these
+your apps should be fine
+unless....
+```
+
+---
+
+### Broken Libraries
+
+- [Connected React Router](https://github.com/supasate/connected-react-router)
+- [Redux Form](http://redux-form.com/)
+- [React Redux Firebase](http://react-redux-firebase.com/)
+- ...
+
+---
+
+### React Redux with React's New Context API
+
+---
+
+#### accessing `store`
+
+```jsx
+import { ReactReduxContext } from 'react-redux'
+
+// in your connected component
+render() {
+  return (
+    <ReactReduxContext.Consumer>
+      {({ store }) => <div>{store}</div>}
+    </ReactReduxContext.Consumer>
+  )
+}
+```
+
+---
+
+#### Custom Context
+
+```jsx
+// provider
+<Provider context={MyContext} store={store}>
+  <App />
+</Provider>
+```
+
+```jsx
+// _AND_ connected components
+export default connect(
+  mapState,
+  mapDispatch,
+  null,
+  {
+    context: MyContext
+  }
+)(MyComponent);
+
+// or
+const ConnectedComponent = connect(
+  mapState,
+  mapDispatch
+)(MyComponent);
+<ConnectedComponent context={MyContext} />;
+```
+
+---
+
+You need to supply the custom context in both `<Provider />` and in your connected components, otherwise you get runtime error
+
+---
+
+> Invariant Violation
+
+> Could not find "store" in the context of "Connect(MyComponent)". Either wrap the root component in a , or pass a custom React context provider to and the corresponding React context consumer to Connect(Todo) in connect options.
+
+---
+
+It provides good isolation for multiple stores
+
+```jsx
+// a naive example
+
+// there is no need to supply a default value when creating the context
+// the value will be supplied when React-Redux mounts with your Context.Provider
+const ContextA = React.createContext();
+const ContextB = React.createContext();
+
+// assuming reducerA and reducerB are proper reducer functions
+const storeA = createStore(reducerA);
+const storeB = createStore(reducerB);
+
+// rendering
+return (
+  <Provider store={storeA} context={ContextA}>
+    <Provider store={storeB} context={ContextB}>
+      <App />
+    </Provider>
+  </Provider>
+);
+```
+
+```notes
+personal opinion
+
+multiple store is never recommended
+
+not redux's design intention
+
+but there are "inadvisable position" where u may have to use it
+```
+
+---
+
+It's also possible to chain `connect()`
+
+```jsx
+import { compose } from "redux";
+import { connect } from "react-redux";
+
+compose(
+  connect(
+    mapStateA,
+    null,
+    null,
+    { context: ContextA }
+  ),
+  connect(
+    mapStateB,
+    null,
+    null,
+    { context: ContextB }
+  )
+)(MyComponent);
+```
+
+[A CodeSandbox example](https://codesandbox.io/s/92pm9n2kl4)

@@ -1,0 +1,151 @@
+import { Split } from "mdx-deck/layouts";
+
+## 🌰 Declarative API
+
+the _Object Shorthand_ of `mapDispatchToProps`
+
+---
+
+Remember how with Redux the only way to trigger a change to the store is
+
+```js
+// recall what we did with the bare bone example
+document.addEventListener("click", () => {
+  store.dispatch({ type: "INCREMENT" });
+});
+```
+
+---
+
+`dispatch`, no?
+
+---
+
+By right we should do:
+
+```jsx
+const MyComponent = () => (
+  <div onClick={/** somehow call store.dispatch({ type: 'MY_ACTION' })*/}>
+    Click!
+  </div>
+);
+export default connect()(MyComponent);
+```
+
+---
+
+React Redux gives `dispatch` by default
+
+```jsx
+const MyComponent = props => (
+  <div onClick={props.dispatch({ type: "MY_ACTION" })}>Click!</div>
+);
+export default connect()(MyComponent);
+```
+
+```notes
+In fact, if we did connect in the above way, React Redux supplies our component with our store’s `dispatch`. So that we can do:
+```
+
+---
+
+**if no second parameter is supplied**
+
+```jsx
+connect()(MyComponent);
+
+connect(mapStateToProps)(MyComponent);
+
+connect(
+  mapStateToProps,
+  null
+)(MyComponent);
+
+connect(
+  null,
+  null,
+  null,
+  null
+)(MyComponent);
+// component receives `dispatch`
+```
+
+---
+
+### `mapDispatchToProps` as a function
+
+```jsx
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  // whatever you put here will be merged to your connected component as props
+  onClick: () => dispatch({ type: "MY_CLICK_ACTION" })
+});
+
+const MyComponent = props => (
+  <div onClick={props.onClick}>Click!</div>
+  // note that the component is not seeing "dispatch"
+  // all it knows is props has an onClick callback
+);
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(MyComponent);
+```
+
+component is no longer seeing `dispatch` 🙈
+
+---
+
+### with `bindActionCreators`
+
+```jsx
+import { bindActionCreators } from 'redux';
+
+const increment = () => ({ type: 'INCREMENT' })
+const incrementBy = (num) => ({ type: 'INCREMENT_BY', num });
+
+const mapDispatchToProps = (dispatch, ownProps) {
+  return bindActionCreators({ increment, incrementBy }, dispatch)
+};
+
+```
+
+same as
+
+```jsx
+//
+const mapDispatchToProps = (dispatch, ownProps) {
+  return {
+    increment: () => dispatch(increment()),
+    // it forwards all the parameters, too :D
+    incrementBy: num => dispatch(incrementBy(num)),
+  }
+};
+```
+
+---
+
+### “Object 🙊 shorthand”
+
+```jsx
+const mapDispatchToProps = { increment, incrementBy };
+```
+
+---
+
+```jsx
+const mapDispatchToProps = { increment, incrementBy };
+
+const MyComponent = props => <div onClick={props.increment}>+</div>;
+export default connect(
+  null,
+  mapDispatchToProps
+)(MyComponent);
+```
+
+now our whole component is `dispatch`-free! 🙌
+
+---
+
+- declarative
+- encapsulates logic talking to Redux so we don’t have to worry about it

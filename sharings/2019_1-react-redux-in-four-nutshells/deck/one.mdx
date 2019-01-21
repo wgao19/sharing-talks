@@ -1,0 +1,202 @@
+import { FullScreenCode } from "mdx-deck/layouts";
+import { Split } from "mdx-deck/layouts";
+
+## 🌰 Using [Redux](https://redux.js.org/) with a UI
+
+---
+
+> Redux
+
+<img src="https://react-redux.js.org/img/redux.svg" width="200" />
+
+> a predictable state container for JavaScript apps
+
+```notes
+
+To understand React Redux, we need to first understand Redux.
+
+Redux is just “a predictable state container for JavaScript apps”. It describes the “state” of our apps in a single, big, JavaScript object. Let’s review the Redux APIs quickly.
+```
+
+---
+
+`store` API
+
+- `store.getState()`
+- `store.dispatch(action)`
+- `store.subscribe(listener)`
+
+```notes
+
+While React Redux strikes to us as, perhaps, Provider and connect(), Redux looks a bit different. Here’s the API for Redux. Ever wonder what makes our app work with these barebone APIs? This is what we’re going to figure out in this talk.
+
+
+`getState` will return the state of our app. This would be the “getter” function.
+
+The “setter”, however, is a bit different. The only (intended) way you can change the store is by dispatching an action to the store. And then you’ll define how your store responds to that action by providing corresponding reducer. We’re not going into that in this talk.
+
+And finally `subscribe` gets your listener in queue to be called whenever the store state updates.
+
+I want to bring to our attention here that although these three are the fundamental APIs from Redux, we’re not using them very often if not at all. How come? Let’s leave that to the end of today’s talks and hopefully we’ll have a refreshed understanding about the APIs of those libraries.
+```
+
+---
+
+### Naive Use of Redux with a UI
+
+---
+
+To use Redux with any UI, we need to:
+
+- get the `store` state
+- get notified whenever the store state changes
+- interact with the store
+
+```notes
+1 in order to render what the UI needs on the screen
+2 so as to keep the UI updated
+3 in case of redux, by dispatching actions to it
+```
+
+---
+
+export default FullScreenCode;
+
+```js
+import { createStore } from "redux";
+
+// assuming we've implemented a simple "counter" reducer
+// this is just Redux
+const store = createStore(counter);
+
+// get store state
+document.getElementById("app").innerHTML = `counter: ${store.getState()}`;
+
+// function render() {
+//  document.getElementById("app").innerHTML = `counter: ${store.getState()}`;
+// }
+
+// get notified
+store.subscribe(render);
+
+// interact
+document.addEventListener("click", () => {
+  store.dispatch({ type: "INCREMENT" });
+});
+
+// initial render
+render();
+```
+
+---
+
+### Using Redux with React
+
+---
+
+[A gist by Dan Abramov](https://gist.github.com/gaearon/1d19088790e70ac32ea636c025ba424e)
+
+---
+
+export default FullScreenCode;
+
+```jsx
+// You call it like connect(mapState, mapDispatch)(Component)
+function connect(mapStateToProps, mapDispatchToProps) {
+  return function (WrappedComponent) {
+    // It returns a component
+    return class extends React.Component {
+      render() {
+        return (
+          // that renders your component
+          <WrappedComponent
+            {/* with its props  */}
+            {...this.props}
+            {/* and additional props calculated from Redux store */}
+            {...mapStateToProps(store.getState(), this.props)}
+            {...mapDispatchToProps(store.dispatch, this.props)}
+          />
+        )
+      }
+      componentDidMount() {
+        // it remembers to subscribe to the store so it doesn't miss updates
+        this.unsubscribe = store.subscribe(this.handleChange.bind(this))
+      }
+      componentWillUnmount() {
+        // and unsubscribe later
+        this.unsubscribe()
+      }
+      handleChange() {
+        // and whenever the store state changes, it re-renders
+        this.forceUpdate()
+        // but in reality `connect` is optimized such that
+        // it only re-renders when the data it needs changed
+      }
+    }
+  }
+}
+```
+
+```notes
+This is just a mind model.
+There are a lot of details and edge cases omitted.
+But perhaps most importantly, sitting in the core value of React Redux are a couple of things we’re using and taking for granted everyday.
+```
+
+---
+
+- Performance optimization
+- Declarative API
+
+---
+
+### A Little History of React Redux
+
+| version | time frame      |
+| :-----: | :-------------- |
+|  v0-4   | July - Oct 2015 |
+|   v5    | Dec 2016        |
+|   v6    | Dec 2018        |
+
+---
+
+export default Split;
+
+![](https://pbs.twimg.com/media/Dw_0iYdWoAAMKkI.jpg)
+
+Early Versions
+
+- [v0.2.0](https://github.com/reduxjs/react-redux/releases/tag/v0.2.0)
+- [v0.3.0](https://github.com/reduxjs/react-redux/releases/tag/v0.3.0)
+- [v0.5.0](https://github.com/reduxjs/react-redux/releases/tag/v0.5.0)
+- [v0.6.0](https://github.com/reduxjs/react-redux/releases/tag/v0.6.0)
+- [v0.8.0](https://github.com/reduxjs/react-redux/releases/tag/v0.8.0)
+- [v0.9.0](https://github.com/reduxjs/react-redux/releases/tag/v0.9.0)
+
+```notes
+Happened between July and Oct 2015, mainly written by Dan Abramov, simple implementation roughly following the gist above.
+
+interesting notes there
+```
+
+---
+
+#### [v4.0.0](https://github.com/reduxjs/react-redux/releases/tag/v4.0.0)
+
+> "modern react redux"
+
+---
+
+#### [v5.0.0](https://github.com/reduxjs/react-redux/releases/tag/v5.0.0)
+
+`connectAdvanced`: a mind blowing refactor with performance optimizations
+
+---
+
+#### [v6.0.0](https://github.com/reduxjs/react-redux/releases/tag/v6.0.0)
+
+React’s “new” context API
+
+---
+
+An interesting article about the history of React Redux [Idiomatic Redux: The History and Implementation of React-Redux](https://blog.isquaredsoftware.com/2018/11/react-redux-history-implementation/)

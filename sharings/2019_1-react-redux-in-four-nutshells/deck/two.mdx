@@ -1,0 +1,66 @@
+## 🌰 Performance Optimizations with `mapStateToProps`
+
+> React Redux takes care of the equality checks so that our apps don’t re-render when not necessary
+
+---
+
+- when do `mapStateToProps` functions run
+- when do connected components re-render
+
+---
+
+### When do `mapStateToProps` functions run?
+
+---
+
+All connected components’ `mapStateToProps` runs whenever the store changes
+
+---
+
+<video controls autoPlay>
+  <source src="./assets/mapState runs.mov" />
+</video>
+
+🙈 Take home: `mapStateToProps` functions should run as fast as possible.
+
+---
+
+### When do connected components re-render?
+
+---
+
+It depends on `mapState` return, i.e.:
+
+```jsx
+const mapStateToProps = (state, ownProps) => ({
+  foo: "bar",
+  bar: ownProps.bar,
+  evil: { ...ownProps.evil }
+});
+```
+
+---
+
+<video controls autoPlay>
+  <source src="./assets/re-renders.mov" />
+</video>
+
+---
+
+put the striking shopee's home page re-render here
+
+---
+
+🙊 Take home: Only return new object references when needed
+
+```js
+const mapStateToProps = (state, ownProps) => ({
+  myFavoriteThingOnAXmasTree: state.mistletoe,  // 💁🏻‍♀️
+  myLeastFavorite: { ...state.jingleBell },     // 🙅🏻‍♀️
+  { ...state.iroiro }, // this is tricky, you don't know for sure
+});
+```
+
+```notes
+This is where React Redux does work for us. We’ve already been taking advantages of React’s optimizations where only changed components are re-rendered. React Redux has aligned with that. Although each connected component receives the whole store state whenever the store changes, only component with updated merged props will re-render. This is further determined by a default equality function (`===` on each field of the mergedProps). You may define your own equality functions for customized optimization.
+```
