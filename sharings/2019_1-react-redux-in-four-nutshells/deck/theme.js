@@ -26,6 +26,9 @@ export default {
   paragraph: {
     textAlign: "left"
   },
+  code: {
+    padding: "5px"
+  },
   prism: {
     style,
     languages: {
