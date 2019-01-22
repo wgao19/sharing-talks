@@ -1,27 +1,58 @@
 ## 🌰 Performance Optimizations with `mapStateToProps`
 
+---
+
 > React Redux takes care of the equality checks so that our apps don’t re-render when not necessary
+
+```notes
+the store of our whole app is in one single object
+each connected component will be notified whenever anything changes
+```
 
 ---
 
 - when do `mapStateToProps` functions run
 - when do connected components re-render
 
+```notes
+two questions arise
+```
+
 ---
 
 ### When do `mapStateToProps` functions run?
 
+```notes
+have u ever thought about...
+```
+
 ---
 
-All connected components’ `mapStateToProps` runs whenever the store changes
+All connected components’ `mapStateToProps` run whenever the store state changes
 
 ---
 
-<video controls autoPlay>
+<video controls autoPlay loop>
   <source src="./assets/mapState runs.mov" />
 </video>
 
-🙈 Take home: `mapStateToProps` functions should run as fast as possible.
+---
+
+<div style={{ width: "100vw", height: "100vh", overflowY: "scroll" }}>
+  <img src="./assets/shopee.png" />
+</div>
+
+```notes
+not a big deal unless of course if we're on this page
+```
+
+---
+
+🙈 Take home: `mapStateToProps` functions should be fast, pure, and synchronous
+
+```notes
+i've put a console log in `mapState`
+```
 
 ---
 
@@ -41,13 +72,9 @@ const mapStateToProps = (state, ownProps) => ({
 
 ---
 
-<video controls autoPlay>
+<video controls autoPlay loop>
   <source src="./assets/re-renders.mov" />
 </video>
-
----
-
-put the striking shopee's home page re-render here
 
 ---
 
@@ -62,5 +89,14 @@ const mapStateToProps = (state, ownProps) => ({
 ```
 
 ```notes
-This is where React Redux does work for us. We’ve already been taking advantages of React’s optimizations where only changed components are re-rendered. React Redux has aligned with that. Although each connected component receives the whole store state whenever the store changes, only component with updated merged props will re-render. This is further determined by a default equality function (`===` on each field of the mergedProps). You may define your own equality functions for customized optimization.
+react redux does the check for us
 ```
+
+---
+
+### recap `mapState`
+
+- 🙊 should be fast, pure, and synchronous
+- 🙈 return reference to new objects only when needed
+
+[Connect: Extracting Data with mapStateToProps](https://react-redux.js.org/using-react-redux/connect-mapstate)

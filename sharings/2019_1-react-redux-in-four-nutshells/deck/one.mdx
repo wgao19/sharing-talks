@@ -1,21 +1,34 @@
 import { FullScreenCode } from "mdx-deck/layouts";
-import { Split } from "mdx-deck/layouts";
+import { Horizontal } from "mdx-deck/layouts";
 
 ## 🌰 Using [Redux](https://redux.js.org/) with a UI
 
 ---
 
-> Redux
-
 <img src="https://react-redux.js.org/img/redux.svg" width="200" />
+
+> Redux
 
 > a predictable state container for JavaScript apps
 
 ```notes
 
-To understand React Redux, we need to first understand Redux.
+10sec review of what Redux is
 
-Redux is just “a predictable state container for JavaScript apps”. It describes the “state” of our apps in a single, big, JavaScript object. Let’s review the Redux APIs quickly.
+ok here's the official definition
+
+```
+
+---
+
+<!-- ![](./assets/redux-docsite.png)
+
+<iframe src="https://redux.js.org/" width="1280" height="720" />
+ -->
+
+```notes
+in case you haven't noticed
+they have a new doc site powered by docusaurus
 ```
 
 ---
@@ -27,17 +40,9 @@ Redux is just “a predictable state container for JavaScript apps”. It descri
 - `store.subscribe(listener)`
 
 ```notes
+here's the redux API that we never (really) use
 
-While React Redux strikes to us as, perhaps, Provider and connect(), Redux looks a bit different. Here’s the API for Redux. Ever wonder what makes our app work with these barebone APIs? This is what we’re going to figure out in this talk.
-
-
-`getState` will return the state of our app. This would be the “getter” function.
-
-The “setter”, however, is a bit different. The only (intended) way you can change the store is by dispatching an action to the store. And then you’ll define how your store responds to that action by providing corresponding reducer. We’re not going into that in this talk.
-
-And finally `subscribe` gets your listener in queue to be called whenever the store state updates.
-
-I want to bring to our attention here that although these three are the fundamental APIs from Redux, we’re not using them very often if not at all. How come? Let’s leave that to the end of today’s talks and hopefully we’ll have a refreshed understanding about the APIs of those libraries.
+mention here that a lot of work is done by react redux
 ```
 
 ---
@@ -46,7 +51,7 @@ I want to bring to our attention here that although these three are the fundamen
 
 ---
 
-To use Redux with any UI, we need to:
+To use Redux with _any_ UI, we need to:
 
 - get the `store` state
 - get notified whenever the store state changes
@@ -70,11 +75,11 @@ import { createStore } from "redux";
 const store = createStore(counter);
 
 // get store state
-document.getElementById("app").innerHTML = `counter: ${store.getState()}`;
+// document.getElementById("app").innerHTML = `counter: ${store.getState()}`;
 
-// function render() {
-//  document.getElementById("app").innerHTML = `counter: ${store.getState()}`;
-// }
+function render() {
+  document.getElementById("app").innerHTML = `counter: ${store.getState()}`;
+}
 
 // get notified
 store.subscribe(render);
@@ -88,19 +93,55 @@ document.addEventListener("click", () => {
 render();
 ```
 
+```notes
+it's conceptually simple
+```
+
 ---
 
 ### Using Redux with React
 
 ---
 
-[A gist by Dan Abramov](https://gist.github.com/gaearon/1d19088790e70ac32ea636c025ba424e)
+[connect.js explained](https://gist.github.com/gaearon/1d19088790e70ac32ea636c025ba424e)
+
+<div>
+  by <i>Dan Abramov</i>
+</div>
+
+---
+
+export default Horizontal;
+
+![](https://pbs.twimg.com/media/Dw_0iYdWoAAMKkI.jpg)
+
+<div
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  }}
+>
+  <a
+    href="https://twitter.com/dan_abramov/status/1085354938383953920"
+    style={{ color: "#764abc", textDecoration: "none" }}
+  >
+    #10yearchallenge
+  </a>
+</div>
 
 ---
 
 export default FullScreenCode;
 
 ```jsx
+
+// first, put `store` somewhere
+// answer: context
+
+
 // You call it like connect(mapState, mapDispatch)(Component)
 function connect(mapStateToProps, mapDispatchToProps) {
   return function (WrappedComponent) {
@@ -138,9 +179,13 @@ function connect(mapStateToProps, mapDispatchToProps) {
 ```
 
 ```notes
-This is just a mind model.
-There are a lot of details and edge cases omitted.
-But perhaps most importantly, sitting in the core value of React Redux are a couple of things we’re using and taking for granted everyday.
+first we put `store` somewhere
+answer is context, and we omit the details here
+
+dan summarizes this as a mind model
+v1 - v4 all roughly follows this (cuz it's all mainly written by dan)
+
+react redux does two major things that we take advantage of everyday
 ```
 
 ---
@@ -158,45 +203,10 @@ But perhaps most importantly, sitting in the core value of React Redux are a cou
 |   v5    | Dec 2016        |
 |   v6    | Dec 2018        |
 
----
-
-export default Split;
-
-![](https://pbs.twimg.com/media/Dw_0iYdWoAAMKkI.jpg)
-
-Early Versions
-
-- [v0.2.0](https://github.com/reduxjs/react-redux/releases/tag/v0.2.0)
-- [v0.3.0](https://github.com/reduxjs/react-redux/releases/tag/v0.3.0)
-- [v0.5.0](https://github.com/reduxjs/react-redux/releases/tag/v0.5.0)
-- [v0.6.0](https://github.com/reduxjs/react-redux/releases/tag/v0.6.0)
-- [v0.8.0](https://github.com/reduxjs/react-redux/releases/tag/v0.8.0)
-- [v0.9.0](https://github.com/reduxjs/react-redux/releases/tag/v0.9.0)
+[The History and Implementation of React-Redux](https://blog.isquaredsoftware.com/2018/11/react-redux-history-implementation/)
 
 ```notes
-Happened between July and Oct 2015, mainly written by Dan Abramov, simple implementation roughly following the gist above.
-
-interesting notes there
+0 - 4 all relatively simple, roughly following the gist above
+5 has an epic wrap around `connect`
+6 uses the new context API
 ```
-
----
-
-#### [v4.0.0](https://github.com/reduxjs/react-redux/releases/tag/v4.0.0)
-
-> "modern react redux"
-
----
-
-#### [v5.0.0](https://github.com/reduxjs/react-redux/releases/tag/v5.0.0)
-
-`connectAdvanced`: a mind blowing refactor with performance optimizations
-
----
-
-#### [v6.0.0](https://github.com/reduxjs/react-redux/releases/tag/v6.0.0)
-
-React’s “new” context API
-
----
-
-An interesting article about the history of React Redux [Idiomatic Redux: The History and Implementation of React-Redux](https://blog.isquaredsoftware.com/2018/11/react-redux-history-implementation/)
