@@ -1,8 +1,11 @@
 import { Split } from "mdx-deck/layouts";
+import { Appear } from "mdx-deck";
 
 ## 🌰 Declarative API
 
-## the _Object Shorthand_ of `mapDispatchToProps`
+the _Object Shorthand_ of `mapDispatchToProps`
+
+---
 
 I hear there are two factions
 
@@ -16,69 +19,33 @@ export default Split;
 
 ---
 
-Remember how with Redux the only way to trigger a change to the store is
-
-```js
-// recall what we did with the bare bone example
-document.addEventListener("click", () => {
-  store.dispatch({ type: "INCREMENT" });
-});
-```
-
----
-
 `dispatch`, no?
 
 ---
 
-By right we should do:
+_If you do not specify a `mapDispatch`, React Redux will give you `dispatch` by default_
 
-```jsx
-const MyComponent = () => (
-  <div onClick={/** somehow call store.dispatch({ type: 'MY_ACTION' })*/}>
-    Click!
-  </div>
-);
-export default connect()(MyComponent);
-```
-
----
-
-React Redux gives `dispatch` by default
-
-```jsx
-const MyComponent = props => (
-  <div onClick={props.dispatch({ type: "MY_ACTION" })}>Click!</div>
-);
-export default connect()(MyComponent);
-```
+- `connect()(MyComponent)`
+- `connect(mapState)(MyComponent)`
 
 ```notes
-In fact, if we did connect in the above way, React Redux supplies our component with our store’s `dispatch`. So that we can do:
+let's find `dispatch`
+
+_If you do not specify a `mapDispatch`, React Redux will give you `dispatch` by default_
+
+but only when u don't specify mapdispatch
+
 ```
 
 ---
 
-**if no second parameter is supplied**
+so that you can do
 
 ```jsx
-connect()(MyComponent);
-
-connect(mapStateToProps)(MyComponent);
-
-connect(
-  mapStateToProps,
-  null
-)(MyComponent);
-
-connect(
-  null,
-  null,
-  null,
-  null
-)(MyComponent);
-// component receives `dispatch`
+<button onClick={props.dispatch({ type: "BUTTON_CLICK" })}>Click!</button>
 ```
+
+<Appear>... but who does that?</Appear>
 
 ---
 
@@ -104,6 +71,32 @@ export default connect(
 
 component is no longer seeing `dispatch` 🙈
 
+```notes
+first look at the function form
+
+here you're suppose to write your return (normally referred to as dispatch props)
+as functions, calling which should dispatch an action
+
+because you've wrapped that dispatch in the closure, you no longer need to use `dispatch` in your component
+
+```
+
+---
+
+the _"original"_ `mapDispatch`?
+
+```notes
+i think of it as the "original" mapDispatch
+
+by right it's the "standard" way of doing it
+- consistent signature with mapState
+- receives exactly the same "treatment" internally, wrapping, optimization, binding, etc
+  -> read "connectAdvanced", very interesting
+
+but if you consider the declarativity of what `mapDispatch` API eventually brings us
+this one feels more like an intermediate step
+```
+
 ---
 
 ### with `bindActionCreators`
@@ -117,7 +110,6 @@ const incrementBy = (num) => ({ type: 'INCREMENT_BY', num });
 const mapDispatchToProps = (dispatch, ownProps) {
   return bindActionCreators({ increment, incrementBy }, dispatch)
 };
-
 ```
 
 same as
@@ -133,9 +125,18 @@ const mapDispatchToProps = (dispatch, ownProps) {
 };
 ```
 
+```notes
+this convenient API is provided by Redux
+
+what it does is that it takes the action providers you provide in the first parameter
+and "bind" that with dispatch you provide in the second parameter
+
+and since you gain access to `dispatch` in your `mapDispatch`, you should just pass that dispatch in
+```
+
 ---
 
-### “Object 🙊 shorthand”
+the 🙊 _object shorthand_
 
 ```jsx
 const mapDispatchToProps = { increment, incrementBy };
@@ -153,9 +154,27 @@ export default connect(
 )(MyComponent);
 ```
 
-now our whole component is `dispatch`-free! 🙌
+now `dispatch` is invisible to our whole app! 🙊
+
+```notes
+now even our `mapDispatch` function is not seeing "dispatch"
+```
 
 ---
 
 - declarative
 - encapsulates logic talking to Redux so we don’t have to worry about it
+
+```notes
+connectjs is essentially a hoc
+
+what a hoc does is that it encapsulates some complex logic so its user don't have to worry about it
+
+we write a lot ourselves too, with tracking, etc
+
+it keeps its component "unaware" of redux, as we've seen, the component is completely unaware of "dispatch"
+
+it's really doing a good job
+
+it keeps _me_ unaware of Redux as well!
+```
