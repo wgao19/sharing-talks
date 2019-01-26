@@ -6,23 +6,18 @@ import { Split } from "mdx-deck/layouts";
 
 ---
 
-- 🌰 Using Redux with a UI
-- 🌰 Performance Optimizations with `mapStateToProps`
-- 🌰 Declarative API with `mapDispatchToProps`
-- 🌰 Modern React Redux
-
----
-
 ## Motivation of this talk
 
-[#1001](https://github.com/reduxjs/react-redux/issues/1001), [#1031](https://github.com/reduxjs/react-redux/issues/1031)
-
-check out [the new docsite](https://react-redux.js.org)
+- Rewrite React-Redux docs completely, [#1001](https://github.com/reduxjs/react-redux/issues/1001)
 
 ```notes
 last year, there was a react-redux doc rewrite issue that I've been helping with sept - nov
 there is a new doc site for react-redux now
 ```
+
+---
+
+![](./assets/docs-work.png)
 
 ---
 
@@ -43,6 +38,17 @@ export default Split;
 we've written ...
 then one of the maintainers wrote an article about the motivation
 then react v6 was released in Dec, and so we've updated the docs on that part, too
+```
+
+---
+
+<iframe src="https://react-redux.js.org/" width="1280" height="720" />
+
+check out [the new docsite](https://react-redux.js.org)
+
+```notes
+- docusaurus
+- netlify
 ```
 
 ---
@@ -83,8 +89,23 @@ and there were a lot of interesting attempts around `useRedux`
 
 and that people are putting tremendous work into helping each other
 
-but how come this has dragged for so long...
+should have done this earlier but...
 i never "feel ready" as in feel I've known enough to be able to give a talk
 but i guess following the spirit of react knowledgeable
-i should share the process as a work in progress
+i should share the learning process because we're all constantly a work in progress
+```
+
+---
+
+## React Redux in Four Nutshells
+
+- 🌰 Using Redux with a UI
+- 🌰 Performance Optimizations with `mapStateToProps`
+- 🌰 Declarative API with `mapDispatchToProps`
+- 🌰 React Redux v6
+
+```notes
+first i'd like to talk about how to use barebone redux by itself
+then we'll look at the two main pieces of connect, mapState and mapDispatch
+finally we'll take a look at react redux v6
 ```

@@ -21,10 +21,9 @@ ok here's the official definition
 
 ---
 
-<!-- ![](./assets/redux-docsite.png)
+<!-- ![](./assets/redux-docsite.png) -->
 
 <iframe src="https://redux.js.org/" width="1280" height="720" />
- -->
 
 ```notes
 in case you haven't noticed
@@ -42,7 +41,11 @@ they have a new doc site powered by docusaurus
 ```notes
 here's the redux API that we never (really) use
 
-mention here that a lot of work is done by react redux
+-> main point I want to make today
+how come we're using redux everyday, but we're not using any of those?
+
+because react redux is doing all the talking
+
 ```
 
 ---
@@ -53,9 +56,15 @@ mention here that a lot of work is done by react redux
 
 To use Redux with _any_ UI, we need to:
 
-- get the `store` state
-- get notified whenever the store state changes
-- interact with the store
+api
+
+- `store.getState()`
+- `store.dispatch(action)`
+- `store.subscribe(listener)`
+
+* get the `store` state
+* get notified whenever the store state changes
+* interact with the store
 
 ```notes
 1 in order to render what the UI needs on the screen
@@ -182,10 +191,7 @@ function connect(mapStateToProps, mapDispatchToProps) {
 first we put `store` somewhere
 answer is context, and we omit the details here
 
-dan summarizes this as a mind model
-v1 - v4 all roughly follows this (cuz it's all mainly written by dan)
-
-react redux does two major things that we take advantage of everyday
+react redux does the work here to make sure components re-render at correct times
 ```
 
 ---
