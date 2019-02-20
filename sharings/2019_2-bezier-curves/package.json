@@ -1,0 +1,19 @@
+{
+  "name": "2019_2-bezier-curves",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "mdx-deck": "^1.8.2"
+  },
+  "scripts": {
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build deck.mdx"
+  },
+  "devDependencies": {
+    "css-loader": "^2.1.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "react-syntax-highlighter": "^10.1.2",
+    "style-loader": "^0.23.1"
+  }
+}

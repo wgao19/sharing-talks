@@ -1,0 +1,97 @@
+export { swiss as theme } from "mdx-deck/themes";
+import { Split } from "mdx-deck/layouts";
+
+# Understanding the Bézier Curves
+
+An Intuitive Approach
+
+---
+
+## Why Bézier Curves?
+
+[Pierre Bézier](https://en.wikipedia.org/wiki/Pierre_B%C3%A9zier), an engineer at Renault, was looking for a tool to define curves.
+
+---
+
+![](https://upload.wikimedia.org/wikipedia/commons/a/a1/Renault_R8_Gordini_Lahti.JPG)
+
+---
+
+- easy to parametrize
+- easy to alter & control shape
+
+```notes
+curves defined by the Bézier curves are
+```
+
+---
+
+![](./assets/geometric-definition.png)
+
+```notes
+(explain the mathematical definition)
+```
+
+---
+
+![](https://upload.wikimedia.org/wikipedia/commons/3/3d/B%C3%A9zier_2_big.gif)
+
+```notes
+another way to visualize it is to think of it as an "interpolation"
+- leaving the starting point,
+- while this force drives it to move towards this direction, this other point is driving it towards this direction
+- finally concluding at the end point
+```
+
+---
+
+Recursive definition
+
+![](./assets/cubic-definition.png)
+
+---
+
+Linear, quadratic, and cubic Bézier curves
+
+![](https://upload.wikimedia.org/wikipedia/commons/0/00/B%C3%A9zier_1_big.gif)
+
+![](https://upload.wikimedia.org/wikipedia/commons/3/3d/B%C3%A9zier_2_big.gif)
+
+![](https://upload.wikimedia.org/wikipedia/commons/d/db/B%C3%A9zier_3_big.gif)
+
+---
+
+export default Split;
+
+![](./assets/geometric-definition.png)
+
+![](./assets/quadratic-equations.png)
+
+---
+
+Definitions on:
+
+- coordinate systems
+- vector spaces
+- algebraic definition (with Bernstein polynomial)
+
+Some more convenient than other depending on situations
+
+```notes
+There are very advanced mathematical theories that says they're all equivalent with each other
+```
+
+---
+
+<iframe
+  src="http://cubic-bezier.com"
+  style={{ width: "100vw", height: "100vh" }}
+/>
+
+---
+
+## Creating Animations that Look "Real"
+
+```notes
+Understanding the Bézier curves better halps you create more real-looking animations with CSS.
+```
