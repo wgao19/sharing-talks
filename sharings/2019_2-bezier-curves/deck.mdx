@@ -1,5 +1,6 @@
 export { swiss as theme } from "mdx-deck/themes";
-import { Split } from "mdx-deck/layouts";
+import { FullScreenCode } from "mdx-deck/layouts";
+import { Split, Horizontal } from "mdx-deck/layouts";
 
 # Understanding the Bézier Curves
 
@@ -85,18 +86,93 @@ Some use cases of Bézier curves
 
 ---
 
-<iframe
-  src="http://cubic-bezier.com"
-  style={{ width: "100vw", height: "100vh" }}
-/>
+## Creating Animations that Look "Real"
+
+![](./assets/original-design.gif)
+
+```notes
+Understanding the Bézier curves better helps you create more real-looking animations with CSS.
+```
 
 ---
 
-## Creating Animations that Look "Real"
+trick: think about physics
+
+<video controls autoPlay loop width="100%">
+  <source src="./assets/accelerate-easing.mp4" />
+</video>
+
+---
+
+<video controls autoPlay loop width="100%">
+  <source src="./assets/decelerate-easing.mp4" />
+</video>
+
+---
+
+quadratic curves
+
+![](./assets/ease-in-ease-out.png)
+
+```css
+cubic-bezier(.42, 0, 1, 1);  // ease-in
+cubic-bezier(0, 0, .58, 1);  // ease-out
+```
 
 ```notes
-Understanding the Bézier curves better halps you create more real-looking animations with CSS.
+the quadratic curves are defined with three points, two of them fixed
+so only one "extra point" for a source of force
 ```
+
+---
+
+cubic curves
+
+![](./assets/ease-ease-in-out.png)
+
+---
+
+```css
+animation: animation 1s cubic-bezier(0.6, 0, 1, 1) infinite;
+animation-direction: alternate;
+```
+
+![]('./assets/ease-in-ease-out.png)
+
+[bouncing](https://codepen.io/wgao19/pen/exapzp)
+
+---
+
+bézier curves in animation time functions
+
+"curving" the time
+
+```notes
+one thing that's really imaginative about the use of bezier curves is the css's animation timing functions
+at this time you may start to realize that I "lied" to you about how we have real physics here
+that's an illusion lol
+we're not defining a function of distance over time as you noticed
+we define relocation
+then we define how much we progress with respect to time for that relocation
+
+in another words, we "curve" the time
+```
+
+---
+
+which Bézier curve moves the object faster?
+
+<iframe
+  src="http://cubic-bezier.com/#.6,0,1,1"
+  style={{ width: "100vw", height: "80vh" }}
+/>
+
+```notes
+once we understand what we're really doing with the timing functions
+we can very easily tell which Bézier curve moves the object faster
+```
+
+---
 
 ## References
 
