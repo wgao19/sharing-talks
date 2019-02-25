@@ -50,12 +50,6 @@ another way to visualize it is to think of it as an "interpolation"
 
 ---
 
-Recursive definition
-
-![](./assets/cubic-definition.png)
-
----
-
 Linear, quadratic, and cubic Bézier curves
 
 ![](https://upload.wikimedia.org/wikipedia/commons/0/00/B%C3%A9zier_1_big.gif)
@@ -63,6 +57,11 @@ Linear, quadratic, and cubic Bézier curves
 ![](https://upload.wikimedia.org/wikipedia/commons/3/3d/B%C3%A9zier_2_big.gif)
 
 ![](https://upload.wikimedia.org/wikipedia/commons/d/db/B%C3%A9zier_3_big.gif)
+
+```notes
+one of the reason why we say it is "easy to alter" is that
+there is a constructive approach to add a degree to the Bézeir curves
+```
 
 ---
 
@@ -135,11 +134,54 @@ cubic curves
 ```css
 animation: animation 1s cubic-bezier(0.6, 0, 1, 1) infinite;
 animation-direction: alternate;
+
+@keyframes animation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(300%);
+  }
+}
 ```
 
-![]('./assets/ease-in-ease-out.png)
+[CodePen](https://codepen.io/wgao19/pen/exapzp)
 
-[bouncing](https://codepen.io/wgao19/pen/exapzp)
+---
+
+export default FullScreenCode;
+
+```css
+animation: pausing 4s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+
+/* or ease-in-out */
+animation: pausing 4s ease-in-out infinite;
+
+@keyframes pausing {
+  0%,
+  20% {
+    transform: translateY(0);
+  }
+  40%,
+  50% {
+    transform: translateY(1500px);
+  }
+  70%,
+  100% {
+    transform: translateY(0);
+  }
+}
+```
+
+```notes
+we notice that it's not pausing as we wished, and we need to implement the pause
+CSS animations’ looping scheme does not offer a too obvious way to implement a pause between iterations. You would have to implement the gap by combining the loops
+
+
+in this case we _will_ actually need an ease-in-out timing function because
+there is a change in direction
+and to imlement that change in direction we need two points instead of one
+```
 
 ---
 
@@ -149,10 +191,12 @@ bézier curves in animation time functions
 
 ```notes
 one thing that's really imaginative about the use of bezier curves is the css's animation timing functions
+
 at this time you may start to realize that I "lied" to you about how we have real physics here
 that's an illusion lol
 we're not defining a function of distance over time as you noticed
 we define relocation
+
 then we define how much we progress with respect to time for that relocation
 
 in another words, we "curve" the time
@@ -168,12 +212,36 @@ which Bézier curve moves the object faster?
 />
 
 ```notes
+
+the x axis is "our time"
+the y axis is how much progress we make with respect to current time
+
 once we understand what we're really doing with the timing functions
 we can very easily tell which Bézier curve moves the object faster
 ```
 
 ---
 
-## References
+### Now we should be able to implement the pausing, three-card deck
 
-- [Bézier Curves from JavaScript.info](https://javascript.info/bezier-curve)
+![](./assets/original-design.gif)
+
+---
+
+```css
+.card-0 {
+  animation: pausing 4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+.card-1 {
+  animation: pausing 4s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
+}
+.card-2 {
+  animation: pausing 4s cubic-bezier(0.5, 0.4, 0.5, 0.6) infinite;
+}
+```
+
+[CodePen](https://codepen.io/wgao19/pen/BvXmxQ)
+
+```notes
+
+```
